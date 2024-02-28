@@ -1,3 +1,8 @@
+// CS-280 Sp24
+// Derek Shannon & Sydney Nilles
+// Assignment #6
+// 03/01/2024
+
 public class Car extends Vehicle{
     private int numDoors;
 
@@ -8,6 +13,6 @@ public class Car extends Vehicle{
 
     @Override
     public void printInfo(){
-        
+
     }
 }

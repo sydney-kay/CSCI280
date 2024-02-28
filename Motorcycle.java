@@ -1,3 +1,8 @@
+// CS-280 Sp24
+// Derek Shannon & Sydney Nilles
+// Assignment #6
+// 03/01/2024
+
 public class Motorcycle extends Vehicle{
     private Boolean isCruiser;
 
