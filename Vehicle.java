@@ -10,6 +10,6 @@ public class Vehicle {
     }
 
     public void printInfo(){
-        System.out.println("");
+        System.out.println("%i");
     }
 }
