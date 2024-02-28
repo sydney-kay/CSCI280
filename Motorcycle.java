@@ -13,6 +13,6 @@ public class Motorcycle extends Vehicle{
 
     @Override
     public void printInfo(){
-        System.out.printf("Year: %d\nMake: %S\nModel: %S\nCruiser: %S\n", year, make, model, isCruiser);
+        System.out.printf("\nYear: %d\nMake: %S\nModel: %S\nCruiser: %S\n", year, make, model, isCruiser);
     }
 }

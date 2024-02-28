@@ -13,6 +13,6 @@ public class Car extends Vehicle{
 
     @Override
     public void printInfo(){
-        System.out.printf("Year: %s\nMake: %S\nModel: %S\nDoors: %S\n", year, make, model, numDoors);
+        System.out.printf("\nYear: %s\nMake: %S\nModel: %S\nDoors: %S\n", year, make, model, numDoors);
     }
 }
