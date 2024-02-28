@@ -15,6 +15,6 @@ public class Vehicle {
     }
 
     public void printInfo(){
-        System.out.printf("\nYear: %d\nMake: %S\nModel: %S\n", year, make, model);
+        System.out.printf("Year: %s\nMake: %S\nModel: %S\n\n", year, make, model);
     }
 }
