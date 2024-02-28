@@ -10,6 +10,6 @@ public class Vehicle {
     }
 
     public void printInfo(){
-        System.out.println("%i");
+        System.out.println(year + " " + make + " " + model);
     }
 }
