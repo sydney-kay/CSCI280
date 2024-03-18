@@ -9,10 +9,10 @@ public class Dog extends Animal{
         super(name); //Invokes the superclass constructor
     }
 
-    @Override
-    public void eat(){ 
+    /*@Override
+    public void eat(){  // taking this out of a comment will cause an error
         System.out.println("Nom Nom");
-    }
+    }*/
 
     @Override
     public void sleep(){

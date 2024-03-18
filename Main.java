@@ -5,7 +5,7 @@ public class Main {
         steve.sleep();
 
         Dog joe = new Dog("joe");
-        joe.eat(); // taking this out of a comment will cause an error
+        joe.eat(); 
         joe.sleep();
     }
 }
