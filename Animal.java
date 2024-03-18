@@ -2,7 +2,7 @@ public class Animal {
     private String name;
 
     public Animal (String name){
-        name = this.name;
+        this.name = name;
     }
 
     public final void eat(){
