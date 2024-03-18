@@ -14,7 +14,7 @@ public class Animal {
         System.out.println(name + " is eating.");
     }
 
-    public final void sleep(){
+    public void sleep(){
         System.out.println(name + " is sleeping.");
     }
 }
