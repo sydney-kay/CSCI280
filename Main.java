@@ -5,11 +5,13 @@
 
 public class Main {
     public static void main(String[] args){
-
+        
+        //creates Animal Object and tests methods
         Animal steve = new Animal("steve");
         steve.eat();
         steve.sleep();
 
+        //creates Dog Object and tests methods
         Dog joe = new Dog("joe");
         joe.eat(); 
         joe.sleep();
