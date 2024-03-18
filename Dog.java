@@ -8,6 +8,7 @@ public class Dog extends Animal{
     public Dog(String name){
         super(name); //Invokes the superclass constructor
     }
+    
     /* Unable to override method due to final modifier
     @Override
     public void eat(){
@@ -17,6 +18,6 @@ public class Dog extends Animal{
 
     @Override
     public void sleep(){
-        System.out.println(this.name + "is sleeping on your bed.");
+        System.out.println(this.name + " is sleeping on your bed.");
     }
 }

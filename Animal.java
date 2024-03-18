@@ -10,6 +10,7 @@ public class Animal {
         this.name = name;
     }
 
+    //used final to prevent overriding in subclasses
     public final void eat(){
         System.out.println(name + " is eating.");
     }
