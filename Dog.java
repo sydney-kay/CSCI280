@@ -1,11 +1,20 @@
+// CS-280 Sp24
+// Derek Shannon & Sydney Nilles
+// Exercise 3/11
+// 03/18/2024
+
 public class Dog extends Animal{
+    
     public Dog(String name){
-        Animal.super(name);
+        super(name); //Invokes the superclass constructor
     }
+
     @Override
     public void eat(){ 
         System.out.println("Nom Nom");
     }
+
+    @Override
     public void sleep(){
         System.out.println("zzzzzzzzzzz");
     }

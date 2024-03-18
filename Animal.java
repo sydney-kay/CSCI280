@@ -1,3 +1,8 @@
+// CS-280 Sp24
+// Derek Shannon & Sydney Nilles
+// Exercise 3/11
+// 03/18/2024
+
 public class Animal {
     private String name;
 
