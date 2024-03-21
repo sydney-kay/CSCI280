@@ -3,6 +3,8 @@
 // Exercise 3/11
 // 03/18/2024
 
+/* closing off from creating more errors
+
 public class Main {
     public static void main(String[] args){
         
@@ -17,3 +19,5 @@ public class Main {
         joe.sleep();
     }
 }
+
+*/
