@@ -2,6 +2,7 @@
 // Sydney Nilles
 // Assignment 7 - due 03/21/2024
 
+/* stopping this guy from making more errors
 public class Main {
     public static void main(String []args){
         // testing the Student class
@@ -21,3 +22,4 @@ public class Main {
         mrWagner.removeCourse("CS101");
     }
 }
+*/

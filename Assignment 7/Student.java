@@ -2,6 +2,7 @@
 // Sydney Nilles
 // Assignment 7 - due 03/21/2024
 
+/* STOP CAUSING PROBLEMS
 public class Student extends Person{
     private int numCourses;
     private String courses[] = new String[30];
@@ -36,7 +37,7 @@ public class Student extends Person{
     adds together all grades within the range of 0 to numCourses-1 to make sure
     the average is accurate and does not include the initial objects it was
     initialized with.
-    */
+    *//*
     public int getAverageGrade(){
         int total = 0;
         int average = 0;
@@ -47,3 +48,4 @@ public class Student extends Person{
         return average;
     }
 }
+*/
