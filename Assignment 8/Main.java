@@ -2,6 +2,7 @@
 // Sydney Nilles
 // Assignment 8 - due 03/28/2024
 
+/* <- Annoyance prevention
 public class Main {
     public static void main(String[]args){
         Account savings = new Account("67890","Savings", 200);
@@ -25,3 +26,4 @@ public class Main {
         System.out.println(savings.getName() + ": $" + savings.getbalance());
     }
 }
+*/
