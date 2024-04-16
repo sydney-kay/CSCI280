@@ -6,7 +6,6 @@
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,23 +31,27 @@ public class Calculator {
         for (int i = 0; i < 4; i++) {
             // Loop through columns
             for (int j = 0; j < 4; j++) {
+                // color for background of buttons
+                Color bgColor;
+                Color fgColor = new Color(233, 245, 245);
                 // Calculate the index in the numbers array
                 int index = i * 3 + j;
                 // If it's the last column, print the operator, else print the number
                 String displayName = "";
                 if (j == 3) {
                     displayName = operators[i];
-                    //color
+                    bgColor = new Color(82, 82, 99);
                 } else {
                     displayName = numbers[index];
-                    //color
+                    bgColor = new Color(40, 40, 51);
                 }
-
+                
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
-                button.setBackground(new Color(51, 61, 61));
-                button.setForeground(new Color(233, 245, 245));
+                button.setBackground(bgColor);
+                button.setForeground(fgColor);
+
                 frame.add(button);
                 // Add ActionListener to the button
                 button.addActionListener(new ActionListener() {
