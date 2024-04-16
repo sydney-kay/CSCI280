@@ -23,10 +23,26 @@ public class Calculator {
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
-        
+        int buttonSize = 60;
+
+        //Clear, delete, and equal buttons
+        JButton clearBtn = new JButton("C");
+        clearBtn.setBounds(20,20,buttonSize, buttonSize);
+        frame.add(clearBtn);
+
+        JButton deleteBtn = new JButton("DEL");
+        deleteBtn.setBounds(20+buttonSize,20,buttonSize, buttonSize);
+        frame.add(deleteBtn);
+
+        JButton equalBtn = new JButton("=");
+        equalBtn.setBounds(20+buttonSize*2,20,buttonSize*2, buttonSize);
+        frame.add(equalBtn);
+
+
+
+        //number and operator buttons
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "+/-", "0", "."};
         String[] operators = {"+", "-", "*", "/"};
-        int buttonSize = 50;
 
         // Loop through rows
         for (int i = 0; i < 4; i++) {
@@ -46,7 +62,7 @@ public class Calculator {
 
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
-                button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
+                button.setBounds(20+(j*buttonSize), buttonSize+20+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(new Color(51, 61, 61));
                 button.setForeground(new Color(233, 245, 245));
                 frame.add(button);
