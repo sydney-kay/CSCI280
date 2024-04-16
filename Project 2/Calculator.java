@@ -6,7 +6,6 @@
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class Calculator {
         final int WIDTH = 10+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
         final int HEIGHT = 600;
 
+        // color for background of buttons
+        Color bgColor;
         //Clear, delete, and equal buttons
         JButton clearBtn = new JButton("C");
         clearBtn.setBounds(btnStartLocationX,btnStartLocationY,buttonSize, buttonSize);
@@ -56,16 +57,16 @@ public class Calculator {
                 String displayName = "";
                 if (j == 3) {
                     displayName = operators[i];
-                    //color
+                    bgColor = new Color(82, 82, 99);
                 } else {
                     displayName = numbers[index];
-                    //color
+                    bgColor = new Color(40, 40, 51);
                 }
-
+                
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
                 button.setBounds(btnStartLocationX+(j*buttonSize), buttonSize+btnStartLocationY+(i*buttonSize), buttonSize, buttonSize);
-                button.setBackground(new Color(51, 61, 61));
+                button.setBackground(bgColor);
                 button.setForeground(new Color(233, 245, 245));
                 frame.add(button);
                 // Add ActionListener to the button
