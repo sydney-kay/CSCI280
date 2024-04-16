@@ -135,26 +135,49 @@ public class Calculator {
     }
 
     private String findType(String value){
+        //checks if number
         try{
             Integer.parseInt(value);
             return "number";
         }
-        catch(Exception e){
-            return "not Number";
+        catch(Exception e){}
+
+        //checks if operator
+        if("*+-/".contains(value)){
+            return "operator";
         }
+        //checks if decimal
+        if(".".contains(value)){
+            return "decimal";
+        }
+        //checks if +/-
+        if("+/-".contains(value)){
+            return "+/-";
+        }
+        return "Error";
     }
 
     public void buttonClick(ActionEvent e){
         String type = findType(e.getActionCommand());
-        //checks to see if type is number when display is empty
-        if(type == "number" || displaylist.size() != 0){
+        //checks to see if type is number
+        if(type == "number"){
             displaylist.add(e.getActionCommand());
         }
-        else{
+        //if there is nothing in display then auto add 0
+        else if(displaylist.size() == 0 && type != "+/-"){
             displaylist.add("0");
             displaylist.add(e.getActionCommand());
-
         }
+        //if there is already an operator then replace it
+        else if(type=="operator"){
+            if(findType(displaylist.getLast())=="operator"){
+                displaylist.set(displaylist.size()-1, e.getActionCommand());
+            }
+            else{
+                displaylist.add(e.getActionCommand());
+            }
+        }
+        System.out.println(displaylist);
         updateDisplay();
     }
 
