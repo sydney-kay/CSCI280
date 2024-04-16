@@ -33,7 +33,7 @@ public class Calculator {
     }
 
     public void negative(){
-        // set number to a negative value
+        // take input and *-1
     }
 
     public void delete(){
@@ -47,13 +47,13 @@ public class Calculator {
     public void equal(){
         // compute results & display on screen
         // basically call all the other methods depending on what's in display
-        /* for loop of vars in Display
-         * if (i-1) or (i+1) == *
-         *   if (i-1) == *
-         *      i*(i-2)
-         *   else if (i+1) == *
-         *      i*(i+2)
-         * 
+        
+        // check if i is a number
+        /* switch()
+         * case "1": multiplication
+         * case "2": division
+         * case "3": addition
+         * case "4": subtraction
          */
     }
 
