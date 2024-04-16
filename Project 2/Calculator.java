@@ -45,7 +45,17 @@ public class Calculator {
     }
 
     public void equal(){
-        //compute results & display on screen
+        // compute results & display on screen
         // basically call all the other methods depending on what's in display
+        /* for loop of vars in Display
+         * if (i-1) or (i+1) == *
+         *   if (i-1) == *
+         *      i*(i-2)
+         *   else if (i+1) == *
+         *      i*(i+2)
+         * 
+         */
     }
+
+
 }
