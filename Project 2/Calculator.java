@@ -22,26 +22,31 @@ public class Calculator {
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
+        final int buttonSize = 60;
+        final int btnStartLocationX = 20;
+        final int btnStartLocationY = 100;
+        final int WIDTH = 10+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
+        final int HEIGHT = 600;
+
         // color for background of buttons
         Color bgColor = new Color(82, 82, 99);
         Color fgColor = new Color(233, 245, 245);
 
-        int buttonSize = 60;
         //Clear, delete, and equal buttons
         JButton clearBtn = new JButton("C");
-        clearBtn.setBounds(20,20,buttonSize, buttonSize);
+        clearBtn.setBounds(btnStartLocationX,btnStartLocationY,buttonSize, buttonSize);
         clearBtn.setBackground(bgColor);
         clearBtn.setForeground(fgColor);
         frame.add(clearBtn);
 
         JButton deleteBtn = new JButton("DEL");
-        deleteBtn.setBounds(20+buttonSize,20,buttonSize, buttonSize);
+        deleteBtn.setBounds(btnStartLocationX+buttonSize,btnStartLocationY,buttonSize, buttonSize);
         deleteBtn.setBackground(bgColor);
         deleteBtn.setForeground(fgColor);
         frame.add(deleteBtn);
 
         JButton equalBtn = new JButton("=");
-        equalBtn.setBounds(20+buttonSize*2,20,buttonSize*2, buttonSize);
+        equalBtn.setBounds(btnStartLocationX+buttonSize*2,btnStartLocationY,buttonSize*2, buttonSize);
         equalBtn.setBackground(bgColor);
         equalBtn.setForeground(fgColor);
         frame.add(equalBtn);
@@ -68,7 +73,7 @@ public class Calculator {
                 
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
-                button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
+                button.setBounds(btnStartLocationX+(j*buttonSize), buttonSize+btnStartLocationY+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(bgColor);
                 button.setForeground(fgColor);
 
@@ -84,7 +89,7 @@ public class Calculator {
             }
         }
 
-        frame.setSize(400, 800); //size of the screen
+        frame.setSize(WIDTH, HEIGHT); //size of the screen
         frame.setLayout(null);
         frame.setVisible(true); //makes the frame visible
     }
