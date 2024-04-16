@@ -82,15 +82,12 @@ public class Calculator {
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "+/-", "0", "."};
         String[] operators = {"+", "-", "*", "/"};
 
-        // Loop through rows
-        for (int i = 0; i < 4; i++) {
-            // Loop through columns
-            for (int j = 0; j < 4; j++) {
-                // Calculate the index in the numbers array
-                int index = i * 3 + j;
-                // If it's the last column, print the operator, else print the number
+        for (int i = 0; i < 4; i++) { // Loop through rows
+            for (int j = 0; j < 4; j++) {// Loop through columns
+                int index = i * 3 + j; // Calculate the index in the numbers array
                 String displayName = "";
-                if (j == 3) {
+
+                if (j == 3) { // If it's the last column
                     displayName = operators[i];
                     bgColor = new Color(82, 82, 99);
                 } else {
