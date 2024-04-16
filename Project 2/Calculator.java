@@ -11,21 +11,21 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Calculator {
-    private ArrayList<String> display;
+    private ArrayList<String> displaylist;
     private double result;
 
     public Calculator(){
-        display = new ArrayList<String>();
+        displaylist = new ArrayList<String>();
         result = 0.0;
         initializeGUI();
     }
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
-        final int buttonSize = 60;
+        final int buttonSize = 80;
         final int btnStartLocationX = 20;
         final int btnStartLocationY = 100;
-        final int WIDTH = 10+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
+        final int WIDTH = 18+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
         final int HEIGHT = 600;
 
         // color for background of buttons
@@ -116,8 +116,8 @@ public class Calculator {
     }
 
     public void buttonClick(ActionEvent e){
-        display.add(e.getActionCommand());
-        for(String l: display){
+        displaylist.add(e.getActionCommand());
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
@@ -144,16 +144,16 @@ public class Calculator {
     }
 
     public void delete(ActionEvent e){
-        display.remove(display.size()-1);
-        for(String l: display){
+        displaylist.remove(displaylist.size()-1);
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
     }
 
     public void clearCalculator(ActionEvent e){
-        display.clear();
-        for(String l: display){
+        displaylist.clear();
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
@@ -161,7 +161,7 @@ public class Calculator {
 
     public void equal(ActionEvent e){
         // compute results & display on screen
-        // basically call all the other methods depending on what's in display
+        // basically call all the other methods depending on what's in displaylist
         
         // check if i is a number
         /* switch()
