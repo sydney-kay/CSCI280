@@ -50,10 +50,10 @@ public class Calculator {
         
         // check if i is a number
         /* switch()
-         * case "1": multiplication
-         * case "2": division
-         * case "3": addition
-         * case "4": subtraction
+         * case "*": multiplication
+         * case "/": division
+         * case "+": addition
+         * case "-": subtraction
          */
     }
 
