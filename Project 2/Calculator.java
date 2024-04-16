@@ -44,10 +44,9 @@ public class Calculator {
         clearBtn.setBackground(bgColor);
         clearBtn.setForeground(fgColor);
         frame.add(clearBtn);
-        clearBtn.addActionListener(new ActionListener() {
+        clearBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Call your method here
                 clearCalculator(e);
             }
         });
@@ -57,10 +56,9 @@ public class Calculator {
         deleteBtn.setBackground(bgColor);
         deleteBtn.setForeground(fgColor);
         frame.add(deleteBtn);
-        deleteBtn.addActionListener(new ActionListener() {
+        deleteBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Call your method here
                 delete(e);
             }
         });
@@ -70,7 +68,7 @@ public class Calculator {
         equalBtn.setBackground(bgColor);
         equalBtn.setForeground(fgColor);
         frame.add(equalBtn);
-        equalBtn.addActionListener(new ActionListener() {
+        equalBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Call your method here
@@ -106,10 +104,9 @@ public class Calculator {
 
                 frame.add(button);
                 // Add ActionListener to the button
-                button.addActionListener(new ActionListener() {
+                button.addActionListener(new ActionListener() {//click event 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        // Call your method here
                         buttonClick(e);
                     }
                 });
