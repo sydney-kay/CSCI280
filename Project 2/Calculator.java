@@ -35,16 +35,16 @@ public class Calculator {
         // color for background of buttons
         Color bgColor = new Color(82, 82, 99);
         Color fgColor = new Color(233, 245, 245);
-        Border margins = new EmptyBorder(20,20,20,20);
-        
 
         //Main display
         displayLbl = new JLabel("0", JTextField.RIGHT);
         Border outline = BorderFactory.createLineBorder(new Color (40, 40, 51));
+        Border margins = new EmptyBorder(20,20,20,20);
         displayLbl.setBorder(BorderFactory.createCompoundBorder(outline, margins));
         displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
         displayLbl.setBackground(new Color(40, 40, 51));
-        displayLbl.setForeground(bgColor);
+        displayLbl.setForeground(fgColor);
+        displayLbl.setOpaque(true);
         frame.add(displayLbl);
 
         //Clear, delete, and equal buttons
