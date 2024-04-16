@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Calculator {
     private ArrayList<String> displaylist;
     private double result;
+    private JLabel displayLbl;
 
     public Calculator(){
         displaylist = new ArrayList<String>();
@@ -33,11 +34,11 @@ public class Calculator {
         Color fgColor = new Color(233, 245, 245);
 
         //Main display
-        JLabel displayLbl = new JLabel("77+77");
+        displayLbl = new JLabel("0");
         displayLbl.setBorder(BorderFactory.createLineBorder(Color.black));
         displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
         displayLbl.setBackground(new Color(40, 40, 51));
-        displayLbl.setForeground(fgColor);
+
         frame.add(displayLbl);
 
         //Clear, delete, and equal buttons
@@ -116,13 +117,20 @@ public class Calculator {
         frame.setLayout(null);
         frame.setVisible(true); //makes the frame visible
     }
+    public void updateDisplay(){
+        String text = "";
+        for(String l: displaylist){
+            text += l;
+        }
+        if(text==""){
+            text = "0";
+        }
+        displayLbl.setText(text);
+    }
 
     public void buttonClick(ActionEvent e){
         displaylist.add(e.getActionCommand());
-        for(String l: displaylist){
-            System.out.print(l);
-        }
-        System.out.println();
+        updateDisplay();
     }
 
     public void addition(){
@@ -147,18 +155,12 @@ public class Calculator {
 
     public void delete(ActionEvent e){
         displaylist.remove(displaylist.size()-1);
-        for(String l: displaylist){
-            System.out.print(l);
-        }
-        System.out.println();
+        updateDisplay();
     }
 
     public void clearCalculator(ActionEvent e){
         displaylist.clear();
-        for(String l: displaylist){
-            System.out.print(l);
-        }
-        System.out.println();
+        updateDisplay();
     }
 
     public void equal(ActionEvent e){
