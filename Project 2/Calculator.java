@@ -22,18 +22,31 @@ public class Calculator {
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
-        
+        // color for background of buttons
+        Color bgColor;
+
+        int buttonSize = 60;
+        //Clear, delete, and equal buttons
+        JButton clearBtn = new JButton("C");
+        clearBtn.setBounds(20,20,buttonSize, buttonSize);
+        frame.add(clearBtn);
+
+        JButton deleteBtn = new JButton("DEL");
+        deleteBtn.setBounds(20+buttonSize,20,buttonSize, buttonSize);
+        frame.add(deleteBtn);
+
+        JButton equalBtn = new JButton("=");
+        equalBtn.setBounds(20+buttonSize*2,20,buttonSize*2, buttonSize);
+        frame.add(equalBtn);
+
+        //number and operator buttons
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "+/-", "0", "."};
         String[] operators = {"+", "-", "*", "/"};
-        int buttonSize = 50;
 
         // Loop through rows
         for (int i = 0; i < 4; i++) {
             // Loop through columns
             for (int j = 0; j < 4; j++) {
-                // color for background of buttons
-                Color bgColor;
-                Color fgColor = new Color(233, 245, 245);
                 // Calculate the index in the numbers array
                 int index = i * 3 + j;
                 // If it's the last column, print the operator, else print the number
@@ -50,7 +63,7 @@ public class Calculator {
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(bgColor);
-                button.setForeground(fgColor);
+                button.setForeground(new Color(233, 245, 245));
 
                 frame.add(button);
                 // Add ActionListener to the button
@@ -70,7 +83,11 @@ public class Calculator {
     }
 
     public void buttonClick(ActionEvent e){
-        System.out.println(e.getActionCommand());
+        display.add(e.getActionCommand());
+        for(String l: display){
+            System.out.print(l);
+        }
+        System.out.println();
     }
 
     public void addition(){
