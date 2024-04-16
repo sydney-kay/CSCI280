@@ -4,6 +4,7 @@
 // 05/02/2024
 
 import java.io.*;
+import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -44,6 +45,8 @@ public class Calculator {
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
                 frame.add(button);
+                button.setBackground(new Color(0, 30, 29));
+                
             }
         }
 
