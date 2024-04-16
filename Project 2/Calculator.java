@@ -127,9 +127,22 @@ public class Calculator {
         }
         displayLbl.setText(text);
     }
+    private String findType(String value){
+        try{
+            Integer.parseInt(value);
+            return "number";
+        }
+        catch(Exception e){
+            return "not Number";
+        }
+    }
 
     public void buttonClick(ActionEvent e){
-        displaylist.add(e.getActionCommand());
+        String type = findType(e.getActionCommand());
+        //checks to see if type is number when display is empty
+        if(type == "number" || displaylist.size() != 0){
+            displaylist.add(e.getActionCommand());
+        }
         updateDisplay();
     }
 
