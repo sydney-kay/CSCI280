@@ -22,10 +22,10 @@ public class Calculator {
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
-        final int buttonSize = 60;
+        final int buttonSize = 80;
         final int btnStartLocationX = 20;
         final int btnStartLocationY = 100;
-        final int WIDTH = 10+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
+        final int WIDTH = 18+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
         final int HEIGHT = 600;
 
         // color for background of buttons
