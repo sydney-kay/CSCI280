@@ -67,7 +67,11 @@ public class Calculator {
     }
 
     public void buttonClick(ActionEvent e){
-        System.out.println(e.getActionCommand());
+        display.add(e.getActionCommand());
+        for(String l: display){
+            System.out.print(l);
+        }
+        System.out.println();
     }
 
     public void addition(){
