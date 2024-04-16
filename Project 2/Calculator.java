@@ -133,6 +133,7 @@ public class Calculator {
         }
         displayLbl.setText(text);
     }
+
     private String findType(String value){
         try{
             Integer.parseInt(value);
@@ -148,6 +149,11 @@ public class Calculator {
         //checks to see if type is number when display is empty
         if(type == "number" || displaylist.size() != 0){
             displaylist.add(e.getActionCommand());
+        }
+        else{
+            displaylist.add("0");
+            displaylist.add(e.getActionCommand());
+
         }
         updateDisplay();
     }
