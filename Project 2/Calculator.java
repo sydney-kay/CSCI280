@@ -34,14 +34,35 @@ public class Calculator {
         JButton clearBtn = new JButton("C");
         clearBtn.setBounds(btnStartLocationX,btnStartLocationY,buttonSize, buttonSize);
         frame.add(clearBtn);
+        clearBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call your method here
+                clearCalculator(e);
+            }
+        });
 
         JButton deleteBtn = new JButton("DEL");
         deleteBtn.setBounds(btnStartLocationX+buttonSize,btnStartLocationY,buttonSize, buttonSize);
         frame.add(deleteBtn);
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call your method here
+                delete(e);
+            }
+        });
 
         JButton equalBtn = new JButton("=");
         equalBtn.setBounds(btnStartLocationX+buttonSize*2,btnStartLocationY,buttonSize*2, buttonSize);
         frame.add(equalBtn);
+        equalBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call your method here
+                equal(e);
+            }
+        });
 
         //number and operator buttons
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "+/-", "0", "."};
@@ -113,15 +134,23 @@ public class Calculator {
         // take input and *-1
     }
 
-    public void delete(){
-        display.remove(display.size());
+    public void delete(ActionEvent e){
+        display.remove(display.size()-1);
+        for(String l: display){
+            System.out.print(l);
+        }
+        System.out.println();
     }
 
-    public void clearCalculator(){
+    public void clearCalculator(ActionEvent e){
         display.clear();
+        for(String l: display){
+            System.out.print(l);
+        }
+        System.out.println();
     }
 
-    public void equal(){
+    public void equal(ActionEvent e){
         // compute results & display on screen
         // basically call all the other methods depending on what's in display
         
