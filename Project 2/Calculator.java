@@ -6,6 +6,9 @@
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,10 +35,13 @@ public class Calculator {
         // color for background of buttons
         Color bgColor = new Color(82, 82, 99);
         Color fgColor = new Color(233, 245, 245);
+        Border margins = new EmptyBorder(20,20,20,20);
+        
 
         //Main display
         displayLbl = new JLabel("0", JTextField.RIGHT);
-        displayLbl.setBorder(BorderFactory.createLineBorder(Color.black));
+        Border outline = BorderFactory.createLineBorder(new Color (40, 40, 51));
+        displayLbl.setBorder(BorderFactory.createCompoundBorder(outline, margins));
         displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
         displayLbl.setBackground(new Color(40, 40, 51));
         displayLbl.setForeground(bgColor);
