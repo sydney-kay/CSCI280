@@ -29,10 +29,14 @@ public class Calculator {
         final int HEIGHT = 600;
 
         // color for background of buttons
-        Color bgColor;
+        Color bgColor = new Color(82, 82, 99);
+        Color fgColor = new Color(233, 245, 245);
+
         //Clear, delete, and equal buttons
         JButton clearBtn = new JButton("C");
         clearBtn.setBounds(btnStartLocationX,btnStartLocationY,buttonSize, buttonSize);
+        clearBtn.setBackground(bgColor);
+        clearBtn.setForeground(fgColor);
         frame.add(clearBtn);
         clearBtn.addActionListener(new ActionListener() {
             @Override
@@ -44,6 +48,8 @@ public class Calculator {
 
         JButton deleteBtn = new JButton("DEL");
         deleteBtn.setBounds(btnStartLocationX+buttonSize,btnStartLocationY,buttonSize, buttonSize);
+        deleteBtn.setBackground(bgColor);
+        deleteBtn.setForeground(fgColor);
         frame.add(deleteBtn);
         deleteBtn.addActionListener(new ActionListener() {
             @Override
@@ -55,6 +61,8 @@ public class Calculator {
 
         JButton equalBtn = new JButton("=");
         equalBtn.setBounds(btnStartLocationX+buttonSize*2,btnStartLocationY,buttonSize*2, buttonSize);
+        equalBtn.setBackground(bgColor);
+        equalBtn.setForeground(fgColor);
         frame.add(equalBtn);
         equalBtn.addActionListener(new ActionListener() {
             @Override
@@ -88,7 +96,8 @@ public class Calculator {
                 JButton button = new JButton(displayName);
                 button.setBounds(btnStartLocationX+(j*buttonSize), buttonSize+btnStartLocationY+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(bgColor);
-                button.setForeground(new Color(233, 245, 245));
+                button.setForeground(fgColor);
+
                 frame.add(button);
                 // Add ActionListener to the button
                 button.addActionListener(new ActionListener() {
