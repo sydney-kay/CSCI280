@@ -4,6 +4,7 @@
 // 05/02/2024
 
 import java.io.*;
+import java.awt.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,7 @@ public class Calculator {
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
+                button.setBackground(new Color(0, 30, 29));
                 frame.add(button);
                 // Add ActionListener to the button
                 button.addActionListener(new ActionListener() {
