@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Calculator {
-    private ArrayList<String> display;
+    private ArrayList<String> displaylist;
     private double result;
 
     public Calculator(){
-        display = new ArrayList<String>();
+        displaylist = new ArrayList<String>();
         result = 0.0;
         initializeGUI();
     }
@@ -122,8 +122,8 @@ public class Calculator {
     }
 
     public void buttonClick(ActionEvent e){
-        display.add(e.getActionCommand());
-        for(String l: display){
+        displaylist.add(e.getActionCommand());
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
@@ -150,16 +150,16 @@ public class Calculator {
     }
 
     public void delete(ActionEvent e){
-        display.remove(display.size()-1);
-        for(String l: display){
+        displaylist.remove(displaylist.size()-1);
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
     }
 
     public void clearCalculator(ActionEvent e){
-        display.clear();
-        for(String l: display){
+        displaylist.clear();
+        for(String l: displaylist){
             System.out.print(l);
         }
         System.out.println();
@@ -167,7 +167,7 @@ public class Calculator {
 
     public void equal(ActionEvent e){
         // compute results & display on screen
-        // basically call all the other methods depending on what's in display
+        // basically call all the other methods depending on what's in displaylist
         
         // check if i is a number
         /* switch()
