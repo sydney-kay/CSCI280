@@ -24,14 +24,14 @@ public class Calculator {
         JFrame frame = new JFrame();
         final int buttonSize = 80;
         final int btnStartLocationX = 20;
-        final int btnStartLocationY = 100;
+        final int btnStartLocationY = 120;
         final int WIDTH = 18+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
         final int HEIGHT = 600;
 
         //Main display
-        JLabel displayLbl = new JLabel("");
+        JLabel displayLbl = new JLabel("77+77");
         displayLbl.setBorder(BorderFactory.createLineBorder(Color.black));
-        displayLbl.setBounds(20,20, 400, 100);
+        displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
         frame.add(displayLbl);
 
         // color for background of buttons
