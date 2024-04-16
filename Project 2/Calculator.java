@@ -33,11 +33,11 @@ public class Calculator {
         Color fgColor = new Color(233, 245, 245);
 
         //Main display
-        JLabel displayLbl = new JLabel("77+77");
+        JLabel displayLbl = new JLabel("77+77", JTextField.RIGHT);
         displayLbl.setBorder(BorderFactory.createLineBorder(Color.black));
         displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
         displayLbl.setBackground(new Color(40, 40, 51));
-        displayLbl.setForeground(fgColor);
+        displayLbl.setForeground(bgColor);
         frame.add(displayLbl);
 
         //Clear, delete, and equal buttons
