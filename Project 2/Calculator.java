@@ -154,8 +154,10 @@ public class Calculator {
     }
 
     public void delete(ActionEvent e){
-        displaylist.remove(displaylist.size()-1);
-        updateDisplay();
+        if(displaylist.size()!=0){
+            displaylist.remove(displaylist.size()-1);
+            updateDisplay();
+        }
     }
 
     public void clearCalculator(ActionEvent e){
