@@ -28,15 +28,17 @@ public class Calculator {
         final int WIDTH = 18+buttonSize*4+(btnStartLocationX*2); //changes size of window based on button size and margins
         final int HEIGHT = 600;
 
+        // color for background of buttons
+        Color bgColor = new Color(82, 82, 99);
+        Color fgColor = new Color(233, 245, 245);
+
         //Main display
         JLabel displayLbl = new JLabel("");
         displayLbl.setBorder(BorderFactory.createLineBorder(Color.black));
         displayLbl.setBounds(20,20, 400, 100);
+        displayLbl.setBackground(new Color(40, 40, 51));
+        displayLbl.setForeground(fgColor);
         frame.add(displayLbl);
-
-        // color for background of buttons
-        Color bgColor = new Color(82, 82, 99);
-        Color fgColor = new Color(233, 245, 245);
 
         //Clear, delete, and equal buttons
         JButton clearBtn = new JButton("C");
