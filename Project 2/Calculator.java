@@ -5,6 +5,9 @@
 
 import java.io.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Calculator {
@@ -39,17 +42,29 @@ public class Calculator {
                     displayName = numbers[index];
                     //color
                 }
-                
+
                 //create button at calculated position and name
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
                 frame.add(button);
+                // Add ActionListener to the button
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Call your method here
+                        buttonClick(e);
+                    }
+                });
             }
         }
 
         frame.setSize(400, 800); //size of the screen
         frame.setLayout(null);
         frame.setVisible(true); //makes the frame visible
+    }
+
+    public void buttonClick(ActionEvent e){
+        System.out.println(e.getActionCommand());
     }
 
     public void addition(){
