@@ -23,20 +23,27 @@ public class Calculator {
     public void initializeGUI(){
         JFrame frame = new JFrame();
         // color for background of buttons
-        Color bgColor;
+        Color bgColor = new Color(82, 82, 99);
+        Color fgColor = new Color(233, 245, 245);
 
         int buttonSize = 60;
         //Clear, delete, and equal buttons
         JButton clearBtn = new JButton("C");
         clearBtn.setBounds(20,20,buttonSize, buttonSize);
+        clearBtn.setBackground(bgColor);
+        clearBtn.setForeground(fgColor);
         frame.add(clearBtn);
 
         JButton deleteBtn = new JButton("DEL");
         deleteBtn.setBounds(20+buttonSize,20,buttonSize, buttonSize);
+        deleteBtn.setBackground(bgColor);
+        deleteBtn.setForeground(fgColor);
         frame.add(deleteBtn);
 
         JButton equalBtn = new JButton("=");
         equalBtn.setBounds(20+buttonSize*2,20,buttonSize*2, buttonSize);
+        equalBtn.setBackground(bgColor);
+        equalBtn.setForeground(fgColor);
         frame.add(equalBtn);
 
         //number and operator buttons
@@ -63,7 +70,7 @@ public class Calculator {
                 JButton button = new JButton(displayName);
                 button.setBounds(20+(j*buttonSize), 20+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(bgColor);
-                button.setForeground(new Color(233, 245, 245));
+                button.setForeground(fgColor);
 
                 frame.add(button);
                 // Add ActionListener to the button
