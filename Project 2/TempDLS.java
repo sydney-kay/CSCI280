@@ -11,7 +11,7 @@ public class TempDLS {
         String[] operators = {"+", "-", "*", "/"};
 
         // Loop through rows
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             // Loop through columns
             for (int j = 0; j < 4; j++) {
                 // Calculate the index in the numbers array
