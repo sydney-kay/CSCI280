@@ -380,7 +380,8 @@ public class Calculator {
     }
     public void operation3(String operator, int indexOperator){
         System.out.println("\ninput: "+displaylist);
-        //num1
+
+        //gets num1
         String leftNum = "";
         for(int i = indexOperator-1; i >= 0; i--){
             switch(findType(displaylist.get(i))){
@@ -395,7 +396,7 @@ public class Calculator {
         }
         System.out.println("leftNum = "+leftNum);
 
-        //num2
+        //gets num2
         String rightNum = "";
         for(int i = indexOperator+1; i < displaylist.size(); i++){
             switch(findType(displaylist.get(i))){
@@ -444,6 +445,10 @@ public class Calculator {
         }
         System.out.println("Result: "+result);
 
+        if(result.equals("infinity")){
+            
+        }
+        //adds result to the display
         for (int i = 0; i < result.length(); i++) {
             String toAdd = String.valueOf(result.charAt(result.length()-1-i));
             if(toAdd.equals("-")){
