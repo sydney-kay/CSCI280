@@ -379,6 +379,7 @@ public class Calculator {
         }
     }
     public void operation3(String operator, int indexOperator){
+        System.out.println("\ninput: "+displaylist);
         //num1
         String leftNum = "";
         for(int i = indexOperator-1; i >= 0; i--){
@@ -444,8 +445,16 @@ public class Calculator {
         System.out.println("Result: "+result);
 
         for (int i = 0; i < result.length(); i++) {
-            displaylist.add(i, String.valueOf(result.charAt(i)));
+            String toAdd = String.valueOf(result.charAt(result.length()-1-i));
+            if(toAdd.equals("-")){
+                displaylist.add(inputIndex, "+/-");
+            }
+            else{
+                displaylist.add(inputIndex, toAdd);
+            }
         }
+        System.out.println(displaylist);
+        System.out.println();
         updateDisplay();
     }
     
