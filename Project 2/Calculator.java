@@ -26,6 +26,7 @@ public class Calculator {
 
     public void initializeGUI(){
         JFrame frame = new JFrame();
+        frame.getContentPane().setBackground(new Color(18, 18, 26));
         final int buttonSize = 80;
         final int btnStartLocationX = 20;
         final int btnStartLocationY = 105;
@@ -33,16 +34,16 @@ public class Calculator {
         final int HEIGHT = 600;
 
         // color for background of buttons
-        Color bgColor = new Color(82, 82, 99);
+        Color bgColor = new Color(73, 72, 99);
         Color fgColor = new Color(233, 245, 245);
 
         //Main display
         displayLbl = new JLabel("0", JTextField.RIGHT);
-        Border outline = BorderFactory.createLineBorder(new Color (40, 40, 51));
+        Border outline = BorderFactory.createLineBorder(new Color (146, 146, 179));
         Border margins = new EmptyBorder(20,20,20,20);
         displayLbl.setBorder(BorderFactory.createCompoundBorder(outline, margins));
         displayLbl.setBounds(btnStartLocationX,btnStartLocationX, buttonSize*4, buttonSize);
-        displayLbl.setBackground(new Color(40, 40, 51));
+        displayLbl.setBackground(new Color(33, 33, 46));
         displayLbl.setForeground(fgColor);
         displayLbl.setOpaque(true);
         frame.add(displayLbl);
@@ -52,6 +53,7 @@ public class Calculator {
         clearBtn.setBounds(btnStartLocationX,btnStartLocationY,buttonSize, buttonSize);
         clearBtn.setBackground(bgColor);
         clearBtn.setForeground(fgColor);
+        clearBtn.setBorder(outline);
         frame.add(clearBtn);
         clearBtn.addActionListener(new ActionListener() { //click event
             @Override
@@ -64,6 +66,7 @@ public class Calculator {
         deleteBtn.setBounds(btnStartLocationX+buttonSize,btnStartLocationY,buttonSize, buttonSize);
         deleteBtn.setBackground(bgColor);
         deleteBtn.setForeground(fgColor);
+        deleteBtn.setBorder(outline);
         frame.add(deleteBtn);
         deleteBtn.addActionListener(new ActionListener() { //click event
             @Override
@@ -76,6 +79,7 @@ public class Calculator {
         equalBtn.setBounds(btnStartLocationX+buttonSize*2,btnStartLocationY,buttonSize*2, buttonSize);
         equalBtn.setBackground(bgColor);
         equalBtn.setForeground(fgColor);
+        equalBtn.setBorder(outline);
         frame.add(equalBtn);
         equalBtn.addActionListener(new ActionListener() { //click event
             @Override
@@ -96,10 +100,10 @@ public class Calculator {
 
                 if (j == 3) { // If it's the last column
                     displayName = operators[i];
-                    bgColor = new Color(82, 82, 99);
+                    bgColor = new Color(73, 72, 99);
                 } else {
                     displayName = numbers[index];
-                    bgColor = new Color(40, 40, 51);
+                    bgColor = new Color(33, 33, 46);
                 }
                 
                 //create button at calculated position and name
@@ -107,6 +111,7 @@ public class Calculator {
                 button.setBounds(btnStartLocationX+(j*buttonSize), buttonSize+btnStartLocationY+(i*buttonSize), buttonSize, buttonSize);
                 button.setBackground(bgColor);
                 button.setForeground(fgColor);
+                button.setBorder(outline);
 
                 frame.add(button);
                 // Add ActionListener to the button
