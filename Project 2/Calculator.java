@@ -270,12 +270,13 @@ public class Calculator {
         if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
             num1 = num1*-1;
             for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i++){
-                compiledNum = compiledNum + displaylist.get(i);
+                compiledNum = compiledNum + displaylist.remove(i);
+
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         } else {
             for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i++){
-                compiledNum = compiledNum + displaylist.get(i);
+                compiledNum = compiledNum + displaylist.remove(i);
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         }
@@ -284,14 +285,14 @@ public class Calculator {
         if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
             num2 = num2*-1;
             for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i++){
-                compiledNum = compiledNum + displaylist.get(i);
+                compiledNum = compiledNum + displaylist.remove(i);
             }
-            num1 = num1 * Double.parseDouble(compiledNum);
+            num2 = num2 * Double.parseDouble(compiledNum);
         } else {
             for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i++){
-                compiledNum = compiledNum + displaylist.get(i);
+                compiledNum = compiledNum + displaylist.remove(i);
             }
-            num1 = num1 * Double.parseDouble(compiledNum);
+            num2 = num2 * Double.parseDouble(compiledNum);
         }
 
         switch(op){
@@ -303,10 +304,10 @@ public class Calculator {
                 return num1 + num2;
             case "-":
                 return num1 - num2;
+            default:
+                return num1 + num2;
         }
         
-        // it's REALLY made because of this here
-        return -1;
     }
 
     public void negative(){
