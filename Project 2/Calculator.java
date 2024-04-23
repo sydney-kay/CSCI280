@@ -262,8 +262,12 @@ public class Calculator {
             }
         }
         
-        if (displaylist.get()){
-
+        // Checking for negative numbers
+        if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
+            num1 = num1*-1;
+        }
+        if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
+            num2 = num2*-1;
         }
 
 
