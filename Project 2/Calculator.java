@@ -408,6 +408,17 @@ public class Calculator {
         }
         System.out.println("rightNum = "+rightNum);
 
+        //remove numbers and operators
+        int inputIndex = 0; //location of where the result should go
+        for(int i = 0; i < leftNum.length(); i++){
+            inputIndex = indexOperator-1-i;
+            displaylist.remove(inputIndex);
+        }
+        for(int i = 0; i < rightNum.length(); i++){
+            displaylist.remove(inputIndex+1);
+        }
+        displaylist.remove(inputIndex);
+
         //convert to doubles
         double rightNum2 = Double.parseDouble(rightNum);
         double leftNum2 = Double.parseDouble(leftNum);
@@ -430,7 +441,10 @@ public class Calculator {
         }
         System.out.println("Result: "+result);
 
-
+        for (int i = 0; i < result.length(); i++) {
+            displaylist.add(i, String.valueOf(result.charAt(i)));
+        }
+        updateDisplay();
     }
     
     public void equal(ActionEvent e){
