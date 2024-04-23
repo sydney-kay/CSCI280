@@ -366,6 +366,10 @@ public class Calculator {
     }
     
     public void equal(ActionEvent e){
+        if(findType(displaylist.getLast()).equals("operator")){
+            displaylist.remove(displaylist.getLast());
+            updateDisplay();
+        }
         operation4();
         if(displaylist.contains("E")){
             displayLbl.setText("Overflow!");
