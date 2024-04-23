@@ -364,7 +364,7 @@ public class Calculator {
     
     public void equal(ActionEvent e){
         operation4();
-        if(displaylist.get(0).equals("I")){
+        if(displaylist.contains("I")){
             displaylist.clear();
         }
     }
