@@ -296,19 +296,23 @@ public class Calculator {
             }
             num2 = num2 * Double.parseDouble(compiledNum);
         }
-
+        
         switch(op){
             case "*":
                 result = "" + (num1*num2);
+                break;
             case "/":
                 result = "" + (num1/num2);
+                break;
             case "+":
                 result = "" + (num1 + num2);
+                break;
             case "-":
                 result = "" + (num1 - num2);
+                break;
         }
-
-        for (int i = result.length(); i > -1; i--){
+        System.out.println(result);
+        for (int i = result.length()-1; i > -1; i--){
             displaylist.add(displaylist.indexOf(op)+1, result.substring(i,i+1));
         }
         displaylist.remove(op);
