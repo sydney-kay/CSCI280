@@ -336,5 +336,6 @@ public class Calculator {
          * case "+": addition
          * case "-": subtraction
          */
+        System.out.println(operation("+"));
     }
 }
