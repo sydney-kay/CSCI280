@@ -315,10 +315,6 @@ public class Calculator {
         
     }
 
-    public void negative(){
-        // take input and *-1
-    }
-
     public void delete(ActionEvent e){
         if(displaylist.size()!=0){
             displaylist.remove(displaylist.size()-1);
