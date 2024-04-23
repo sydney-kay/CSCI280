@@ -179,22 +179,16 @@ public class Calculator {
                 displaylist.set(displaylist.size()-1, e.getActionCommand());
             }
             else{
-                if(findType(displaylist.getLast()).equals("decimal")){//adds trailing zero to number if none specified
-                    displaylist.add("0");
-                }
                 displaylist.add(e.getActionCommand());
             }
         }
         else if(type=="decimal"){
-            for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist b
+            for(int i = displaylist.size()-1; i>=0; i--){
                 System.out.print(displaylist.get(i));
                 switch(findType(displaylist.get(i))){
                     case "number": 
                         break;
                     case "operator": 
-                        if(i == displaylist.size()-1){//adds leading zero to decimal
-                            displaylist.add("0");
-                        }
                         displaylist.add(e.getActionCommand());
                         i=-1;
                         break;
@@ -217,21 +211,25 @@ public class Calculator {
         updateDisplay();
     }
 
-    public void addition(){
-        // Add all numbers next to a '+' sign
+    public double operation(String op){
+        int indexOfFirstOp = 0;
+        int indexOfLastOp = displaylist.size() -1;
+        for (int i = 0; i <  displaylist.indexOf(op); i++){
+            if (findType(displaylist.get(i)) == "operator"){
+                indexOfFirstOp = i;
+            }
+        }
+        for (int i = displaylist.size() -1; i >  displaylist.indexOf(op); i--){
+            if (findType(displaylist.get(i)) == "operator"){
+                indexOfLastOp = i;
+            }
+        }
+        
+
+
+        return 0.0;        
     }
 
-    public void subtraction(){
-        //substract all numbers next to a '-' sign
-    }
-
-    public void multiply(){
-        // multiply all numbers next to a '*'
-    }
-
-    public void divide(){
-        // divide all numbers next to a '/'
-    }
 
     public void negative(){
         // take input and *-1
