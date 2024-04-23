@@ -392,6 +392,45 @@ public class Calculator {
         }
         System.out.println("leftNum = "+leftNum);
 
+        //num2
+        String rightNum = "";
+        for(int i = indexOperator+1; i < displaylist.size(); i++){
+            switch(findType(displaylist.get(i))){
+                case "+/-":
+                    rightNum = "-"+rightNum;
+                    break;
+                case "operator":
+                    i = displaylist.size()+1;
+                    break;
+                default:
+                    rightNum = rightNum + displaylist.get(i);
+            }
+        }
+        System.out.println("rightNum = "+rightNum);
+
+        //convert to doubles
+        double rightNum2 = Double.parseDouble(rightNum);
+        double leftNum2 = Double.parseDouble(leftNum);
+
+        //calculate result
+        String result = "";
+        switch(operator){
+            case "*":
+                result = "" + (leftNum2 * rightNum2);
+                break;
+            case "/":
+                result = "" + (leftNum2 / rightNum2);
+                break;
+            case "+":
+                result = "" + (leftNum2 + rightNum2);
+                break;
+            case "-":
+                result = "" + (leftNum2 - rightNum2);
+                break;
+        }
+        System.out.println("Result: "+result);
+
+
     }
     
     public void equal(ActionEvent e){
@@ -405,6 +444,6 @@ public class Calculator {
          * case "+": addition
          * case "-": subtraction
          */
-        operation2();
+        operation4();
     }
 }
