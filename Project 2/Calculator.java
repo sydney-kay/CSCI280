@@ -182,6 +182,9 @@ public class Calculator {
                 displaylist.set(displaylist.size()-1, e.getActionCommand());
             }
             else{
+                if(findType(displaylist.getLast())=="decimal"){
+                    displaylist.add("0");
+                }
                 displaylist.add(e.getActionCommand());
             }
         }
@@ -344,10 +347,6 @@ public class Calculator {
                 break;
         }
         System.out.println("Result: "+result);
-
-        if(result.equals("infinity")){
-            
-        }
         //adds result to the display
         for (int i = 0; i < result.length(); i++) {
             String toAdd = String.valueOf(result.charAt(result.length()-1-i));
@@ -364,16 +363,9 @@ public class Calculator {
     }
     
     public void equal(ActionEvent e){
-        // compute results & display on screen
-        // basically call all the other methods depending on what's in displaylist
-        
-        // check if i is a number
-        /* switch()
-         * case "*": multiplication
-         * case "/": division
-         * case "+": addition
-         * case "-": subtraction
-         */
         operation4();
+        if(displaylist.get(0).equals("I")){
+            displaylist.clear();
+        }
     }
 }
