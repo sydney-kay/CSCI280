@@ -186,7 +186,7 @@ public class Calculator {
             }
         }
         else if(type=="decimal"){
-            for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist b
+            for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist
                 System.out.print(displaylist.get(i));
                 switch(findType(displaylist.get(i))){
                     case "number": 
@@ -212,6 +212,36 @@ public class Calculator {
                 }
             }
             System.out.println();
+        }
+        else if(type=="+/-"){
+            //donesn't add +/- if there isn't a number
+            if(displaylist.size()>0){
+                if(!findType(displaylist.getLast()).equals("number")){
+                    return;
+                }
+            }
+            //attempts to add or remove +/-
+            for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist
+                switch(findType(displaylist.get(i))){
+                    case "number":
+                    case "decimal":
+                        break;
+                    case "+/-":
+                        displaylist.remove(i);
+                        i = -1;
+                        break;
+                    case "operator":
+                        displaylist.add(i+1, "+/-");
+                        i = -1;
+                        break;
+                    default:
+                        System.out.println("Error");
+                        break;
+                }
+                if(i==0){
+                    displaylist.add(0, "+/-");
+                }
+            }
         }
         System.out.println(displaylist);
         updateDisplay();
