@@ -212,19 +212,29 @@ public class Calculator {
     }
 
     public double operation(String op){
-        int indexOfFirstOp = 0;
-        int indexOfLastOp = displaylist.size() -1;
+        // setting default indexes in the event there are no operators before the op variable
+        int indexOfFirstOp = -1;
+        int indexOfLastOp = displaylist.size();
+        // setting default numbers before displaylist information is applied
+        double num1 = 1;
+        double num2 = 1;
+
+        // Searching for any operators before op
         for (int i = 0; i <  displaylist.indexOf(op); i++){
             if (findType(displaylist.get(i)) == "operator"){
                 indexOfFirstOp = i;
             }
         }
+        // Searching for any operators after op
         for (int i = displaylist.size() -1; i >  displaylist.indexOf(op); i--){
             if (findType(displaylist.get(i)) == "operator"){
                 indexOfLastOp = i;
             }
         }
         
+        if (displaylist.get()){
+
+        }
 
 
         return 0.0;        
