@@ -244,10 +244,11 @@ public class Calculator {
     public double operation(String op){
         // setting default indexes in the event there are no operators before the op variable
         int indexOfFirstOp = -1;
-        int indexOfLastOp = displaylist.size();
+        int indexOfNextOp = displaylist.size();
         // setting default numbers before displaylist information is applied
         double num1 = 1;
         double num2 = 1;
+        String compiledNum = "";
 
         // Searching for any operators before op
         for (int i = 0; i <  displaylist.indexOf(op); i++){
@@ -258,20 +259,51 @@ public class Calculator {
         // Searching for any operators after op
         for (int i = displaylist.size() -1; i >  displaylist.indexOf(op); i--){
             if (findType(displaylist.get(i)) == "operator"){
-                indexOfLastOp = i;
+                indexOfNextOp = i;
             }
         }
         
-        // Checking for negative numbers
+        // Checking for negative numbers & compiling the list numbers together
         if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
             num1 = num1*-1;
+            for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i++){
+                compiledNum = compiledNum + displaylist.get(i);
+            }
+            num1 = num1 * Double.parseDouble(compiledNum);
+        } else {
+            for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i++){
+                compiledNum = compiledNum + displaylist.get(i);
+            }
+            num1 = num1 * Double.parseDouble(compiledNum);
         }
+        compiledNum = ""; // reset the compiled number so another variable doesn't need to be made
+        // doing the same thing as num1 to num2
         if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
             num2 = num2*-1;
+            for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i++){
+                compiledNum = compiledNum + displaylist.get(i);
+            }
+            num1 = num1 * Double.parseDouble(compiledNum);
+        } else {
+            for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i++){
+                compiledNum = compiledNum + displaylist.get(i);
+            }
+            num1 = num1 * Double.parseDouble(compiledNum);
         }
 
-
-        return 0.0;        
+        switch(op){
+            case "*":
+                return num1*num2;
+            case "/":
+                return num1/num2;
+            case "+":
+                return num1 + num2;
+            case "-":
+                return num1 - num2;
+        }
+        
+        // it's REALLY made because of this here
+        return -1;
     }
 
 
