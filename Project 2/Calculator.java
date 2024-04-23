@@ -270,18 +270,19 @@ public class Calculator {
         // Checking for negative numbers & compiling the list numbers together
         if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
             num1 = num1*-1;
-            for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i++){
+            for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i+=0){
                 compiledNum = compiledNum + displaylist.remove(i);
                 indexOfNextOp--;
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         } else {
-            for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i++){
+            for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i+=0){
                 compiledNum = compiledNum + displaylist.remove(i);
                 indexOfNextOp--;
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         }
+        System.out.println(compiledNum);
         compiledNum = ""; // reset the compiled number so another variable doesn't need to be made
         // doing the same thing as num1 to num2
         if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
@@ -296,6 +297,7 @@ public class Calculator {
             }
             num2 = num2 * Double.parseDouble(compiledNum);
         }
+        System.out.println(compiledNum);
         
         switch(op){
             case "*":
