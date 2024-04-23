@@ -364,6 +364,10 @@ public class Calculator {
     
     public void equal(ActionEvent e){
         operation4();
+        if(displaylist.contains("E")){
+            displayLbl.setText("Overflow!");
+            displaylist.clear();
+        }
         if(displaylist.contains("I")){
             displaylist.clear();
         }
