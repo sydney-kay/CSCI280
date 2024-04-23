@@ -244,13 +244,14 @@ public class Calculator {
         updateDisplay();
     }
 
-    public double operation(String op){
+    public void operation(String op){
         // setting default indexes in the event there are no operators before the op variable
         int indexOfFirstOp = -1;
         int indexOfNextOp = displaylist.size();
         // setting default numbers before displaylist information is applied
         double num1 = 1;
         double num2 = 1;
+        String result = "";
         String compiledNum = "";
 
         // Searching for any operators before op
@@ -271,12 +272,13 @@ public class Calculator {
             num1 = num1*-1;
             for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i++){
                 compiledNum = compiledNum + displaylist.remove(i);
-
+                indexOfNextOp--;
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         } else {
             for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i++){
                 compiledNum = compiledNum + displaylist.remove(i);
+                indexOfNextOp--;
             }
             num1 = num1 * Double.parseDouble(compiledNum);
         }
@@ -297,16 +299,19 @@ public class Calculator {
 
         switch(op){
             case "*":
-                return num1*num2;
+                result = "" + (num1*num2);
             case "/":
-                return num1/num2;
+                result = "" + (num1/num2);
             case "+":
-                return num1 + num2;
+                result = "" + (num1 + num2);
             case "-":
-                return num1 - num2;
-            default:
-                return num1 + num2;
+                result = "" + (num1 - num2);
         }
+
+        for (int i = result.length(); i > -1; i--){
+            displaylist.add(displaylist.indexOf(op)+1, result.substring(i,i+1));
+        }
+        displaylist.remove(op);
         
     }
 
@@ -337,6 +342,5 @@ public class Calculator {
          * case "+": addition
          * case "-": subtraction
          */
-        System.out.println(operation("+"));
     }
 }
