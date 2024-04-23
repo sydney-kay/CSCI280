@@ -131,6 +131,9 @@ public class Calculator {
     public void updateDisplay(){
         String text = "";
         for(String l: displaylist){
+            if(l.equals("+/-")){
+                l="-";
+            }
             text += l;
         }
         if(text==""){
@@ -189,6 +192,9 @@ public class Calculator {
                     case "number": 
                         break;
                     case "operator": 
+                        if(displaylist.size()-1 == i){
+                            displaylist.add("0");
+                        }
                         displaylist.add(e.getActionCommand());
                         i=-1;
                         break;
@@ -261,7 +267,6 @@ public class Calculator {
                 indexOfLastOp = i;
             }
         }
-        
         // Checking for negative numbers
         if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
             num1 = num1*-1;
@@ -269,11 +274,8 @@ public class Calculator {
         if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
             num2 = num2*-1;
         }
-
-
-        return 0.0;        
+        return 0.0;
     }
-
 
     public void negative(){
         // take input and *-1
