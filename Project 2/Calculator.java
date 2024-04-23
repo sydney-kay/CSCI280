@@ -244,83 +244,6 @@ public class Calculator {
         updateDisplay();
     }
 
-    public void operation(String op){
-        // setting default indexes in the event there are no operators before the op variable
-        int indexOfFirstOp = -1;
-        int indexOfNextOp = displaylist.size();
-        // setting default numbers before displaylist information is applied
-        double num1 = 1;
-        double num2 = 1;
-        String result = "";
-        String compiledNum = "";
-
-        // Searching for any operators before op
-        for (int i = 0; i <  displaylist.indexOf(op); i++){
-            if (findType(displaylist.get(i)) == "operator"){
-                indexOfFirstOp = i;
-            }
-        }
-        // Searching for any operators after op
-        for (int i = displaylist.size() -1; i >  displaylist.indexOf(op); i--){
-            if (findType(displaylist.get(i)) == "operator"){
-                indexOfNextOp = i;
-            }
-        }
-        
-        // Checking for negative numbers & compiling the list numbers together
-        if (findType(displaylist.get(indexOfFirstOp + 1)) == "+/-" ){
-            num1 = num1*-1;
-            for (int i = indexOfFirstOp + 2; i <  displaylist.indexOf(op); i+=0){
-                compiledNum = compiledNum + displaylist.remove(i);
-                indexOfNextOp--;
-            }
-            num1 = num1 * Double.parseDouble(compiledNum);
-        } else {
-            for (int i = indexOfFirstOp + 1; i <  displaylist.indexOf(op); i+=0){
-                compiledNum = compiledNum + displaylist.remove(i);
-                indexOfNextOp--;
-            }
-            num1 = num1 * Double.parseDouble(compiledNum);
-        }
-        System.out.println(compiledNum);
-        compiledNum = ""; // reset the compiled number so another variable doesn't need to be made
-        // doing the same thing as num1 to num2
-        if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
-            num2 = num2*-1;
-            for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i++){
-                compiledNum = compiledNum + displaylist.remove(i);
-            }
-            num2 = num2 * Double.parseDouble(compiledNum);
-        } else {
-            for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i++){
-                compiledNum = compiledNum + displaylist.remove(i);
-            }
-            num2 = num2 * Double.parseDouble(compiledNum);
-        }
-        System.out.println(compiledNum);
-        
-        switch(op){
-            case "*":
-                result = "" + (num1*num2);
-                break;
-            case "/":
-                result = "" + (num1/num2);
-                break;
-            case "+":
-                result = "" + (num1 + num2);
-                break;
-            case "-":
-                result = "" + (num1 - num2);
-                break;
-        }
-        System.out.println(result);
-        for (int i = result.length()-1; i > -1; i--){
-            displaylist.add(displaylist.indexOf(op)+1, result.substring(i,i+1));
-        }
-        displaylist.remove(op);
-        
-    }
-
     public void delete(ActionEvent e){
         if(displaylist.size()!=0){
             displaylist.remove(displaylist.size()-1);
@@ -331,29 +254,6 @@ public class Calculator {
     public void clearCalculator(ActionEvent e){
         displaylist.clear();
         updateDisplay();
-    }
-
-    public void operation2(){
-        //do multiplication/division
-        for(int i =0; i < displaylist.size(); i++){
-            String value = displaylist.get(i);
-            if(value.equals("*")){
-                operation("*");
-            }
-            else if(value.equals("/")){
-                operation("/");
-            }
-        }
-        //do addition/subtraction
-        for(int i =0; i < displaylist.size(); i++){
-            String value = displaylist.get(i);
-            if(value.equals("+")){
-                operation("+");
-            }
-            else if(value.equals("-")){
-                operation("-");
-            }
-        }
     }
 
     public void operation4(){
