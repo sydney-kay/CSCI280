@@ -250,6 +250,9 @@ public class Calculator {
     public void delete(ActionEvent e){
         if(displaylist.size()!=0){
             displaylist.remove(displaylist.size()-1);
+            if(findType(displaylist.getLast()).equals("+/-")){
+                displaylist.remove(displaylist.size()-1);
+            }
             updateDisplay();
         }
     }
