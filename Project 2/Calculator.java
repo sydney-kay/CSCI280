@@ -177,6 +177,31 @@ public class Calculator {
                 displaylist.add(e.getActionCommand());
             }
         }
+        else if(type=="decimal"){
+            for(int i = displaylist.size()-1; i>=0; i--){
+                System.out.print(displaylist.get(i));
+                switch(findType(displaylist.get(i))){
+                    case "number": 
+                        break;
+                    case "operator": 
+                        displaylist.add(e.getActionCommand());
+                        i=-1;
+                        break;
+                    case "decimal":
+                        i=-1;
+                        break;
+                    case "+/-":
+                        break;
+                    default:
+                        System.out.println("Error!");
+                        break;
+                }
+                if(i==0){
+                    displaylist.add(e.getActionCommand());
+                }
+            }
+            System.out.println();
+        }
         System.out.println(displaylist);
         updateDisplay();
     }
