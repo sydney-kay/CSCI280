@@ -286,12 +286,12 @@ public class Calculator {
             for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i++){
                 compiledNum = compiledNum + displaylist.get(i);
             }
-            num1 = num1 * Double.parseDouble(compiledNum);
+            num2 = num2 * Double.parseDouble(compiledNum);
         } else {
             for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i++){
                 compiledNum = compiledNum + displaylist.get(i);
             }
-            num1 = num1 * Double.parseDouble(compiledNum);
+            num2 = num2 * Double.parseDouble(compiledNum);
         }
 
         switch(op){
@@ -323,6 +323,29 @@ public class Calculator {
     public void clearCalculator(ActionEvent e){
         displaylist.clear();
         updateDisplay();
+    }
+
+    public void operation2(){
+        //do multiplication/division
+        for(int i =0; i < displaylist.size(); i++){
+            String value = displaylist.get(i);
+            if(value.equals("*")){
+                operation("*");
+            }
+            else if(value.equals("/")){
+                operation("/");
+            }
+        }
+        //do addition/subtraction
+        for(int i =0; i < displaylist.size(); i++){
+            String value = displaylist.get(i);
+            if(value.equals("+")){
+                operation("+");
+            }
+            else if(value.equals("-")){
+                operation("-");
+            }
+        }
     }
 
     public void equal(ActionEvent e){
