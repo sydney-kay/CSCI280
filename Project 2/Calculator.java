@@ -131,6 +131,9 @@ public class Calculator {
     public void updateDisplay(){
         String text = "";
         for(String l: displaylist){
+            if(l.equals("+/-")){
+                l="-";
+            }
             text += l;
         }
         if(text==""){
@@ -184,13 +187,15 @@ public class Calculator {
         }
         else if(type=="decimal"){
             for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist
-                System.out.print(displaylist.get(i));
                 switch(findType(displaylist.get(i))){
                     case "number": 
                         break;
                     case "operator": 
+                        if(displaylist.size()-1 == i){ //adds 0 if there is no number before decimal
+                            displaylist.add("0");
+                        }
                         displaylist.add(e.getActionCommand());
-                        i=-1;
+                        i = -1;
                         break;
                     case "decimal":
                         i=-1;
@@ -201,11 +206,10 @@ public class Calculator {
                         System.out.println("Error!");
                         break;
                 }
-                if(i==0){
+                if(i == 0){
                     displaylist.add(e.getActionCommand());
                 }
             }
-            System.out.println();
         }
         else if(type=="+/-"){
             //donesn't add +/- if there isn't a number
@@ -237,7 +241,6 @@ public class Calculator {
                 }
             }
         }
-        System.out.println(displaylist);
         updateDisplay();
     }
 
@@ -305,7 +308,6 @@ public class Calculator {
         // it's REALLY made because of this here
         return -1;
     }
-
 
     public void negative(){
         // take input and *-1
