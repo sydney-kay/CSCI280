@@ -287,12 +287,12 @@ public class Calculator {
         // doing the same thing as num1 to num2
         if (findType(displaylist.get(displaylist.indexOf(op) + 1)) == "+/-" ){
             num2 = num2*-1;
-            for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i++){
+            for (int i = displaylist.indexOf(op) + 2; i < indexOfNextOp; i+=0){
                 compiledNum = compiledNum + displaylist.remove(i);
             }
             num2 = num2 * Double.parseDouble(compiledNum);
         } else {
-            for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i++){
+            for (int i = displaylist.indexOf(op) + 1; i < indexOfNextOp; i+=0){
                 compiledNum = compiledNum + displaylist.remove(i);
             }
             num2 = num2 * Double.parseDouble(compiledNum);
@@ -469,6 +469,6 @@ public class Calculator {
          * case "+": addition
          * case "-": subtraction
          */
-        operation4();
+        operation2();
     }
 }
