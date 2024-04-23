@@ -179,16 +179,22 @@ public class Calculator {
                 displaylist.set(displaylist.size()-1, e.getActionCommand());
             }
             else{
+                if(findType(displaylist.getLast()).equals("decimal")){//adds trailing zero to number if none specified
+                    displaylist.add("0");
+                }
                 displaylist.add(e.getActionCommand());
             }
         }
         else if(type=="decimal"){
-            for(int i = displaylist.size()-1; i>=0; i--){
+            for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist b
                 System.out.print(displaylist.get(i));
                 switch(findType(displaylist.get(i))){
                     case "number": 
                         break;
                     case "operator": 
+                        if(i == displaylist.size()-1){//adds leading zero to decimal
+                            displaylist.add("0");
+                        }
                         displaylist.add(e.getActionCommand());
                         i=-1;
                         break;
