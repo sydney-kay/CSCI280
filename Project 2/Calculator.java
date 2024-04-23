@@ -360,23 +360,35 @@ public class Calculator {
                 displaylist.add(inputIndex, toAdd);
             }
         }
-        System.out.println(displaylist);
-        System.out.println();
-        updateDisplay();
-    }
-    
-    public void equal(ActionEvent e){
-        if(findType(displaylist.getLast()).equals("operator")){
-            displaylist.remove(displaylist.getLast());
-            updateDisplay();
-        }
-        operation4();
+
+        //checks for possible errors in the output
         if(displaylist.contains("E")){
             displayLbl.setText("Overflow!");
             displaylist.clear();
         }
-        if(displaylist.contains("I")){
+        else if(displaylist.contains("I")){
+            displayLbl.setText("Infinity");
             displaylist.clear();
         }
+        else if(displaylist.contains("N")){
+            displayLbl.setText("Not a Number");
+            displaylist.clear();
+        }
+        else{
+            System.out.println(displaylist);
+            System.out.println();
+            updateDisplay();
+        }
+    }
+    
+    public void equal(ActionEvent e){
+        //checks to see if there is an operator at the end
+        if(findType(displaylist.getLast()).equals("operator")){
+            displaylist.remove(displaylist.getLast());
+            updateDisplay();
+        }
+        
+        //starts calculation
+        operation4();
     }
 }
