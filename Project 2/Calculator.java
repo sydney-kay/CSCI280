@@ -349,6 +349,46 @@ public class Calculator {
         }
     }
 
+    public void operation4(){
+        //do multiplication/division
+        for(int i =0; i < displaylist.size(); i++){
+            String value = displaylist.get(i);
+            if(value.equals("*")){
+                operation3("*", i);
+            }
+            else if(value.equals("/")){
+                operation3("/", i);
+            }
+        }
+        //do addition/subtraction
+        for(int i =0; i < displaylist.size(); i++){
+            String value = displaylist.get(i);
+            if(value.equals("+")){
+                operation3("+", i);
+            }
+            else if(value.equals("-")){
+                operation3("-", i);
+            }
+        }
+    }
+    public void operation3(String operator, int indexOperator){
+        //num1
+        String leftNum = "";
+        for(int i = indexOperator-1; i >= 0; i--){
+            switch(findType(displaylist.get(i))){
+                case "+/-":
+                    leftNum = "-"+leftNum;
+                case "operator":
+                    i = -1;
+                    break;
+                default:
+                    leftNum = displaylist.get(i) + leftNum;
+            }
+        }
+        System.out.println("leftNum = "+leftNum);
+
+    }
+    
     public void equal(ActionEvent e){
         // compute results & display on screen
         // basically call all the other methods depending on what's in displaylist
@@ -360,6 +400,6 @@ public class Calculator {
          * case "+": addition
          * case "-": subtraction
          */
-        System.out.println(operation("+"));
+        operation2();
     }
 }
