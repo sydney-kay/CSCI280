@@ -22,7 +22,7 @@ public class Calculator {
         initializeGUI();
     }
 
-    public void initializeGUI(){
+    private void initializeGUI(){
         JFrame frame = new JFrame();
         frame.getContentPane().setBackground(new Color(18, 18, 26));
         final int buttonSize = 80;
@@ -260,38 +260,7 @@ public class Calculator {
         updateDisplay();
     }
 
-    public void operation4(){
-        //do multiplication/division
-        while(displaylist.contains("*") || displaylist.contains("/")){//needed to catch a shifting array
-            for(int i = 0; i < displaylist.size(); i++){
-                String value = displaylist.get(i);
-                if(value.equals("*")){
-                    operation3("*", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-                else if(value.equals("/")){
-                    operation3("/", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-            }
-        }
-
-        //do addition/subtraction
-        while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
-            for(int i = 0; i < displaylist.size(); i++){
-                String value = displaylist.get(i);
-                if(value.equals("+")){
-                    operation3("+", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-                else if(value.equals("-")){
-                    operation3("-", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-            }
-        }
-    }
-    public void operation3(String operator, int indexOperator){
+    private void executeOperation(String operator, int indexOperator){
         System.out.println("\ninput: "+displaylist);
 
         //gets num1
@@ -356,6 +325,7 @@ public class Calculator {
                 resultNum = (leftNum2 - rightNum2);
                 break;
         }
+
         //removes unnessecary .0 at the end of a number
         String result = "";
         if((int)resultNum == resultNum){
@@ -365,6 +335,7 @@ public class Calculator {
             result = "" + resultNum;
         }
         System.out.println("Result: "+result);
+
         //adds result to the display
         for (int i = 0; i < result.length(); i++) {
             String toAdd = String.valueOf(result.charAt(result.length()-1-i));
@@ -405,6 +376,35 @@ public class Calculator {
             }
         }
         //starts calculation
-        operation4();
+
+        //do multiplication/division
+        while(displaylist.contains("*") || displaylist.contains("/")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("*")){
+                    executeOperation("*", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+                else if(value.equals("/")){
+                    executeOperation("/", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+            }
+        }
+
+        //do addition/subtraction
+        while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("+")){
+                    executeOperation("+", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+                else if(value.equals("-")){
+                    executeOperation("-", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+            }
+        }
     }
 }
