@@ -266,6 +266,7 @@ public class Calculator {
         updateDisplay();
     }
 
+    // Performs math operation "operator" at indexOperator in displaylist
     private void executeOperation(String operator, int indexOperator){
         System.out.println("\ninput: "+displaylist);
 
@@ -373,6 +374,7 @@ public class Calculator {
         }
     }
     
+    // Makes sure all operations are performed when "=" is pressed.
     public void equal(ActionEvent e){
         //checks to see if there is an operator at the end
         if(displaylist.size()>0){
