@@ -57,7 +57,7 @@ public class Calculator {
         clearBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
-                clearCalculator(e);
+                clearCalculator(e); // method to be called
             }
         });
 
@@ -70,7 +70,7 @@ public class Calculator {
         deleteBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
-                delete(e);
+                delete(e); // method to be called
             }
         });
 
@@ -83,7 +83,7 @@ public class Calculator {
         equalBtn.addActionListener(new ActionListener() { //click event
             @Override
             public void actionPerformed(ActionEvent e) {
-                equal(e);
+                equal(e); // method to be called
             }
         });
 
@@ -360,8 +360,14 @@ public class Calculator {
             displaylist.clear();
         }
         else if(displaylist.contains("I")){
-            displayLbl.setText("Infinity");
-            displaylist.clear();
+            if(displaylist.getFirst().equals("+/-")){
+                displayLbl.setText("Negative Infinity");
+                displaylist.clear();
+            }
+            else{
+                displayLbl.setText("Infinity");
+                displaylist.clear();
+            }
         }
         else if(displaylist.contains("N")){
             displayLbl.setText("Not a Number");
