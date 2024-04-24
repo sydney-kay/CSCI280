@@ -277,7 +277,7 @@ public class Calculator {
                 }
             }
         }
-        
+
         //do addition/subtraction
         while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
             for(int i = 0; i < displaylist.size(); i++){
@@ -392,11 +392,12 @@ public class Calculator {
     
     public void equal(ActionEvent e){
         //checks to see if there is an operator at the end
-        if(findType(displaylist.getLast()).equals("operator")){
-            displaylist.remove(displaylist.size()-1);
-            updateDisplay();
+        if(displaylist.size()>0){
+            if(findType(displaylist.getLast()).equals("operator")){
+                displaylist.remove(displaylist.size()-1);
+                updateDisplay();
+            }
         }
-        
         //starts calculation
         operation4();
     }
