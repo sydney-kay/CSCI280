@@ -352,8 +352,14 @@ public class Calculator {
             displaylist.clear();
         }
         else if(displaylist.contains("I")){
-            displayLbl.setText("Infinity");
-            displaylist.clear();
+            if(displaylist.getFirst().equals("+/-")){
+                displayLbl.setText("Negative Infinity");
+                displaylist.clear();
+            }
+            else{
+                displayLbl.setText("Infinity");
+                displaylist.clear();
+            }
         }
         else if(displaylist.contains("N")){
             displayLbl.setText("Not a Number");
