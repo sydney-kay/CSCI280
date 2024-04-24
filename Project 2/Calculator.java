@@ -3,7 +3,6 @@
 // Project 2
 // 05/02/2024
 
-import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -22,6 +21,7 @@ public class Calculator {
         initializeGUI();
     }
 
+    // Sets up the look of the calculator
     private void initializeGUI(){
         JFrame frame = new JFrame();
         frame.getContentPane().setBackground(new Color(18, 18, 26));
@@ -125,6 +125,8 @@ public class Calculator {
         frame.setLayout(null);
         frame.setVisible(true); //makes the frame visible
     }
+
+    // Updates the display depending on invisible information in displaylist
     public void updateDisplay(){
         String text = "";
         for(String l: displaylist){
@@ -139,6 +141,7 @@ public class Calculator {
         displayLbl.setText(text);
     }
 
+    // Checks to see what the type of symbol is in displaylist, and returns a String label of it.
     private String findType(String value){
         //checks if number
         try{
@@ -162,6 +165,7 @@ public class Calculator {
         return "Error";
     }
 
+    // Everything that happens when buttons are pressed, not including equal, delete, and clear.
     public void buttonClick(ActionEvent e){
         String type = findType(e.getActionCommand());
         //checks to see if type is number
@@ -244,6 +248,7 @@ public class Calculator {
         updateDisplay();
     }
 
+    // Deletes item from displaylist and displayLbl.
     public void delete(ActionEvent e){
         if(displaylist.size()!=0){
             displaylist.remove(displaylist.size()-1);
@@ -254,11 +259,13 @@ public class Calculator {
         }
     }
 
+    // Clears displaylist of all items
     public void clearCalculator(ActionEvent e){
         displaylist.clear();
         updateDisplay();
     }
 
+    // Performs math operation "operator" at indexOperator in displaylist
     private void executeOperation(String operator, int indexOperator){
         System.out.println("\ninput: "+displaylist);
 
@@ -372,6 +379,7 @@ public class Calculator {
         }
     }
     
+    // Makes sure all operations are performed when "=" is pressed.
     public void equal(ActionEvent e){
         //checks to see if there is an operator at the end
         if(displaylist.size()>0){
