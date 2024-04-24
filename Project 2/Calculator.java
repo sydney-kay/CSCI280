@@ -264,23 +264,32 @@ public class Calculator {
 
     public void operation4(){
         //do multiplication/division
-        for(int i =0; i < displaylist.size(); i++){
-            String value = displaylist.get(i);
-            if(value.equals("*")){
-                operation3("*", i);
-            }
-            else if(value.equals("/")){
-                operation3("/", i);
+        while(displaylist.contains("*") || displaylist.contains("/")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("*")){
+                    operation3("*", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+                else if(value.equals("/")){
+                    operation3("/", i);
+                    break; //stops for loop as the size of the array has changed
+                }
             }
         }
+        
         //do addition/subtraction
-        for(int i =0; i < displaylist.size(); i++){
-            String value = displaylist.get(i);
-            if(value.equals("+")){
-                operation3("+", i);
-            }
-            else if(value.equals("-")){
-                operation3("-", i);
+        while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("+")){
+                    operation3("+", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+                else if(value.equals("-")){
+                    operation3("-", i);
+                    break; //stops for loop as the size of the array has changed
+                }
             }
         }
     }
