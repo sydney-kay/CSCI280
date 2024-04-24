@@ -15,12 +15,10 @@ import java.util.ArrayList;
 
 public class Calculator {
     private ArrayList<String> displaylist;
-    private double result;
     private JLabel displayLbl;
 
     public Calculator(){
         displaylist = new ArrayList<String>();
-        result = 0.0;
         initializeGUI();
     }
 
@@ -343,20 +341,28 @@ public class Calculator {
         double leftNum2 = Double.parseDouble(leftNum);
 
         //calculate result
-        String result = "";
+        double resultNum = 0;
         switch(operator){
             case "*":
-                result = "" + (leftNum2 * rightNum2);
+                resultNum = (leftNum2 * rightNum2);
                 break;
             case "/":
-                result = "" + (leftNum2 / rightNum2);
+                resultNum = (leftNum2 / rightNum2);
                 break;
             case "+":
-                result = "" + (leftNum2 + rightNum2);
+                resultNum = (leftNum2 + rightNum2);
                 break;
             case "-":
-                result = "" + (leftNum2 - rightNum2);
+                resultNum = (leftNum2 - rightNum2);
                 break;
+        }
+        //removes unnessecary .0 at the end of a number
+        String result = "";
+        if((int)resultNum == resultNum){
+            result = "" + (int) resultNum;
+        }
+        else{
+            result = "" + resultNum;
         }
         System.out.println("Result: "+result);
         //adds result to the display
