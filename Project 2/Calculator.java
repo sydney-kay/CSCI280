@@ -3,7 +3,6 @@
 // Project 2
 // 05/02/2024
 
-import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
