@@ -384,7 +384,7 @@ public class Calculator {
     public void equal(ActionEvent e){
         //checks to see if there is an operator at the end
         if(findType(displaylist.getLast()).equals("operator")){
-            displaylist.remove(displaylist.getLast());
+            displaylist.remove(displaylist.size()-1);
             updateDisplay();
         }
         
