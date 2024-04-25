@@ -24,6 +24,7 @@ public class Calculator {
     // Sets up the look of the calculator
     private void initializeGUI(){
         JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(18, 18, 26));
         frame.setTitle("Calculator");
         final int buttonSize = 80;
