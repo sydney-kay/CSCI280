@@ -167,7 +167,7 @@ public class Calculator {
     }
 
     // Everything that happens when buttons are pressed, not including equal, delete, and clear.
-    public void buttonClick(ActionEvent e){
+    private void buttonClick(ActionEvent e){
         String type = findType(e.getActionCommand());
         //checks to see if type is number
         if(type == "number"){
@@ -250,25 +250,27 @@ public class Calculator {
     }
 
     // Deletes item from displaylist and displayLbl.
-    public void delete(ActionEvent e){
+    private void delete(ActionEvent e){
         if(displaylist.size()!=0){
             displaylist.remove(displaylist.size()-1);
+        }
+        if(displaylist.size()!=0){
             if(findType(displaylist.getLast()).equals("+/-")){
                 displaylist.remove(displaylist.size()-1);
             }
-            updateDisplay();
         }
+        updateDisplay();
     }
 
     // Clears displaylist of all items
-    public void clearCalculator(ActionEvent e){
+    private void clearCalculator(ActionEvent e){
         displaylist.clear();
         updateDisplay();
     }
 
     // Performs math operation "operator" at indexOperator in displaylist
     private void executeOperation(String operator, int indexOperator){
-        System.out.println("\ninput: "+displaylist);
+        // System.out.println("\ninput: "+displaylist);
 
         //gets num1
         String leftNum = "";
@@ -283,7 +285,7 @@ public class Calculator {
                     leftNum = displaylist.get(i) + leftNum;
             }
         }
-        System.out.println("leftNum = "+leftNum);
+        // System.out.println("leftNum = "+leftNum);
 
         //gets num2
         String rightNum = "";
@@ -299,7 +301,7 @@ public class Calculator {
                     rightNum = rightNum + displaylist.get(i);
             }
         }
-        System.out.println("rightNum = "+rightNum);
+        // System.out.println("rightNum = "+rightNum);
 
         //remove numbers and operators
         int inputIndex = 0; //location of where the result should go
@@ -341,7 +343,7 @@ public class Calculator {
         else{
             result = "" + resultNum;
         }
-        System.out.println("Result: "+result);
+        // System.out.println("Result: "+result);
 
         //adds result to the display
         for (int i = 0; i < result.length(); i++) {
@@ -374,14 +376,14 @@ public class Calculator {
             displaylist.clear();
         }
         else{
-            System.out.println(displaylist);
-            System.out.println();
+            // System.out.println(displaylist);
+            // System.out.println();
             updateDisplay();
         }
     }
     
     // Makes sure all operations are performed when "=" is pressed.
-    public void equal(ActionEvent e){
+    private void equal(ActionEvent e){
         //checks to see if there is an operator at the end
         if(displaylist.size()>0){
             if(findType(displaylist.getLast()).equals("operator")){
