@@ -363,25 +363,18 @@ public class Calculator {
             displaylist.clear();
         }
         else if(displaylist.contains("I")){
-            if(displaylist.getFirst().equals("+/-")){
-                displayLbl.setText("Negative Infinity");
-                displaylist.clear();
-            }
-            else{
-                displayLbl.setText("Infinity");
-                displaylist.clear();
-            }
+            displayLbl.setText("Undefined");
+            displaylist.clear();
         }
         else if(displaylist.contains("N")){
             displayLbl.setText("Not a Number");
             displaylist.clear();
         }
         else{
-            // System.out.println(displaylist);
-            // System.out.println();
             updateDisplay();
         }
     }
+
     
     // Makes sure all operations are performed when "=" is pressed.
     private void equal(ActionEvent e){
