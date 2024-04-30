@@ -170,15 +170,18 @@ public class Calculator {
     // Everything that happens when buttons are pressed, not including equal, delete, and clear.
     private void buttonClick(ActionEvent e){
         String type = findType(e.getActionCommand());
+
         //checks to see if type is number
         if(type == "number"){
             displaylist.add(e.getActionCommand());
         }
+
         //if there is nothing in display then auto add 0
         else if(displaylist.size() == 0 && type != "+/-"){
             displaylist.add("0");
             displaylist.add(e.getActionCommand());
         }
+
         //if there is already an operator then replace it
         else if(type=="operator"){
             if(findType(displaylist.getLast())=="operator"){
@@ -191,6 +194,7 @@ public class Calculator {
                 displaylist.add(e.getActionCommand());
             }
         }
+        //loops through the list backward to make sure a decimal can be added
         else if(type=="decimal"){
             for(int i = displaylist.size()-1; i>=0; i--){ //reverse loops through displaylist
                 switch(findType(displaylist.get(i))){
@@ -203,7 +207,7 @@ public class Calculator {
                         displaylist.add(e.getActionCommand());
                         i = -1;
                         break;
-                    case "decimal":
+                    case "decimal": //stops loop and doesn't add a decimal as there is aloready a decimal
                         i=-1;
                         break;
                     case "+/-":
@@ -212,11 +216,12 @@ public class Calculator {
                         System.out.println("Error!");
                         break;
                 }
-                if(i == 0){
+                if(i == 0){//adds decimal even if there is no operators or decimals found
                     displaylist.add(e.getActionCommand());
                 }
             }
         }
+        //tries to make a number negative
         else if(type=="+/-"){
             //donesn't add +/- if there isn't a number
             if(displaylist.size()>0){
@@ -252,10 +257,10 @@ public class Calculator {
 
     // Deletes item from displaylist and displayLbl.
     private void delete(ActionEvent e){
-        if(displaylist.size()!=0){
+        if(displaylist.size()!=0){ //deletes as long as there is still a number in the displaylist
             displaylist.remove(displaylist.size()-1);
         }
-        if(displaylist.size()!=0){
+        if(displaylist.size()!=0){ //removes extra negative sign when the last index of a number is deleted
             if(findType(displaylist.getLast()).equals("+/-")){
                 displaylist.remove(displaylist.size()-1);
             }
@@ -269,12 +274,53 @@ public class Calculator {
         updateDisplay();
     }
 
+    // Makes sure all operations are performed when "=" is pressed.
+    private void equal(ActionEvent e){
+        //attempts to remove unneccessary operation at the end
+        if(displaylist.size()>0){
+            if(findType(displaylist.getLast()).equals("operator")){
+                displaylist.remove(displaylist.size()-1);
+                updateDisplay(); //needed as if no claculation happens, then display is out of sync
+            }
+        }
+        //starts calculation
+
+        //do multiplication/division
+        while(displaylist.contains("*") || displaylist.contains("/")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("*")){
+                    executeOperation("*", i);
+                    break; //stops the loop as the size of the array has changed and 'i' is now likely incorrect
+                }
+                else if(value.equals("/")){
+                    executeOperation("/", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+            }
+        }
+
+        //do addition/subtraction
+        while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
+            for(int i = 0; i < displaylist.size(); i++){
+                String value = displaylist.get(i);
+                if(value.equals("+")){
+                    executeOperation("+", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+                else if(value.equals("-")){
+                    executeOperation("-", i);
+                    break; //stops for loop as the size of the array has changed
+                }
+            }
+        }
+    }
+
     // Performs math operation "operator" at indexOperator in displaylist
     private void executeOperation(String operator, int indexOperator){
-        // System.out.println("\ninput: "+displaylist);
 
         //gets num1
-        String leftNum = "";
+        String leftNum = ""; //stored number as a string value to the left of the operator
         for(int i = indexOperator-1; i >= 0; i--){
             switch(findType(displaylist.get(i))){
                 case "+/-":
@@ -286,10 +332,9 @@ public class Calculator {
                     leftNum = displaylist.get(i) + leftNum;
             }
         }
-        // System.out.println("leftNum = "+leftNum);
 
         //gets num2
-        String rightNum = "";
+        String rightNum = ""; //stored number as a string value to the right of the operator
         for(int i = indexOperator+1; i < displaylist.size(); i++){
             switch(findType(displaylist.get(i))){
                 case "+/-":
@@ -302,18 +347,17 @@ public class Calculator {
                     rightNum = rightNum + displaylist.get(i);
             }
         }
-        // System.out.println("rightNum = "+rightNum);
 
         //remove numbers and operators
         int inputIndex = 0; //location of where the result should go
-        for(int i = 0; i < leftNum.length(); i++){
+        for(int i = 0; i < leftNum.length(); i++){//remove left side number from displaylist
             inputIndex = indexOperator-1-i;
             displaylist.remove(inputIndex);
         }
-        for(int i = 0; i < rightNum.length(); i++){
+        for(int i = 0; i < rightNum.length(); i++){//remove right side number from displaylist
             displaylist.remove(inputIndex+1);
         }
-        displaylist.remove(inputIndex);
+        displaylist.remove(inputIndex); //removes operator from displaylist
 
         //convert to doubles
         double rightNum2 = Double.parseDouble(rightNum);
@@ -344,7 +388,6 @@ public class Calculator {
         else{
             result = "" + resultNum;
         }
-        // System.out.println("Result: "+result);
 
         //adds result to the display
         for (int i = 0; i < result.length(); i++) {
@@ -372,49 +415,6 @@ public class Calculator {
         }
         else{
             updateDisplay();
-        }
-    }
-
-    
-    // Makes sure all operations are performed when "=" is pressed.
-    private void equal(ActionEvent e){
-        //checks to see if there is an operator at the end
-        if(displaylist.size()>0){
-            if(findType(displaylist.getLast()).equals("operator")){
-                displaylist.remove(displaylist.size()-1);
-                updateDisplay();
-            }
-        }
-        //starts calculation
-
-        //do multiplication/division
-        while(displaylist.contains("*") || displaylist.contains("/")){//needed to catch a shifting array
-            for(int i = 0; i < displaylist.size(); i++){
-                String value = displaylist.get(i);
-                if(value.equals("*")){
-                    executeOperation("*", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-                else if(value.equals("/")){
-                    executeOperation("/", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-            }
-        }
-
-        //do addition/subtraction
-        while(displaylist.contains("+") || displaylist.contains("-")){//needed to catch a shifting array
-            for(int i = 0; i < displaylist.size(); i++){
-                String value = displaylist.get(i);
-                if(value.equals("+")){
-                    executeOperation("+", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-                else if(value.equals("-")){
-                    executeOperation("-", i);
-                    break; //stops for loop as the size of the array has changed
-                }
-            }
         }
     }
 }
